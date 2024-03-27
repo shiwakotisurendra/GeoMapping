@@ -1,0 +1,8 @@
+rasterio
+streamlit
+streamlit-folium
+geopandas
+pandas
+folium
+tempfile
+matplotlib
