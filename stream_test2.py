@@ -322,7 +322,7 @@ def main():
         display_raster(raster_data,bounds)
         # folium.raster_layers.WmsTileLayer(url="http://139.6.78.243/geoserver/geonode/wms?",layers="geonode:erft_bevoelkerungszahl",fmt= 'image/jpeg').add_to(m)
     folium.LayerControl().add_to(m)
-    folium_static(m,width=1200,height=900)
+    folium_static(m,width=1200,height=1100)
 
 if __name__ == "__main__":
     main()
