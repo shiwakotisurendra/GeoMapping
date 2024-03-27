@@ -18,7 +18,7 @@ folium.plugins.MiniMap().add_to(m)
 folium.LatLngPopup().add_to(m)
 folium.plugins.MousePosition().add_to(m)
 folium.plugins.Fullscreen().add_to(m)
-folium.plugins.Terminator().add_to(m)
+# folium.plugins.Terminator().add_to(m)
 
 folium.plugins.LocateControl(auto_start=False).add_to(m)
 folium.plugins.MeasureControl(
