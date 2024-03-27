@@ -4,5 +4,4 @@ streamlit-folium
 geopandas
 pandas
 folium
-tempfile
 matplotlib
