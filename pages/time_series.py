@@ -5,8 +5,9 @@ import datetime
 from io import StringIO
 
 # App title and data info
-st.set_page_config(layout="wide")
+st.set_page_config(page_title='Data analytics Dashboard', layout="wide")
 st.title("Data Analytics App")
+st.header("Upload the file for Data visualization")
 
 
 # Function to save uploaded file to session state
@@ -22,7 +23,7 @@ def save_uploaded_file(uploaded_file):
 
 # File uploader widget
 with st.sidebar:
-  uploaded_file = st.file_uploader("Choose a file",type=['csv','txt','xlsx','json','geojson','gpkg'])
+  uploaded_file = st.file_uploader("Choose a file",type=['csv','txt'])
   skiplines = st.number_input('Insert rows to skip',value=0)
   plotting_options = st.selectbox('select type of the plot', ['time_series','line_plot','bar_plot', 'scatter_plot','box_plot','hist_plot','density_heatmap','density_contour','violin_plot'],placeholder='select plot',index=None)
 
