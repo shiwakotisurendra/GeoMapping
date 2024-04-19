@@ -41,27 +41,29 @@ if 'uploaded_file' not in st.session_state:
           selected_col = st.selectbox("Select Column to Plot (y-axis)", data.columns)
           # data.columns = ["Date", f"{uploaded_file.name.split('.')[0]}"].append(data.columns[2:])
           data['Date']=data[time_column]
+          
+        if selected_col is not None and time_column is not None:
 
-        data["Date"] = pd.to_datetime(data['Date'])
-        st.write(data)  # Display the first few rows
+          data["Date"] = pd.to_datetime(data['Date'])
+          st.write(data)  # Display the first few rows
 
-        # Time series plot with plotly
-          # Exclude 'Temperature'
+          # Time series plot with plotly
+            # Exclude 'Temperature'
 
-        # Time range slider
-        min_date = data['Date'].min().timestamp()
-        max_date = data['Date'].max().timestamp()
-        min_date_selected, max_date_selected = st.slider("Select Time Range",
-                                                        min_value=datetime.datetime.fromtimestamp(min_date),
-                                                        max_value=datetime.datetime.fromtimestamp(max_date),
-                                                        value=(datetime.datetime.fromtimestamp(min_date), datetime.datetime.fromtimestamp(max_date)))
+          # Time range slider
+          min_date = data['Date'].min().timestamp()
+          max_date = data['Date'].max().timestamp()
+          min_date_selected, max_date_selected = st.slider("Select Time Range",
+                                                          min_value=datetime.datetime.fromtimestamp(min_date),
+                                                          max_value=datetime.datetime.fromtimestamp(max_date),
+                                                          value=(datetime.datetime.fromtimestamp(min_date), datetime.datetime.fromtimestamp(max_date)))
 
-        # Filter data based on slider selection
-        filtered_data = data.loc[(data['Date'] >= min_date_selected) & (data['Date'] <= max_date_selected)]
+          # Filter data based on slider selection
+          filtered_data = data.loc[(data['Date'] >= min_date_selected) & (data['Date'] <= max_date_selected)]
 
-        # Create plotly figure
-        fig = px.line(filtered_data, x='Date', y=selected_col,height=500,markers=False,color_discrete_sequence=['blue'],template='seaborn',title='Time Series Plotting')
-        st.plotly_chart(fig,theme=None,use_container_width=True)
+          # Create plotly figure
+          fig = px.line(filtered_data, x='Date', y=selected_col,height=500,markers=False,color_discrete_sequence=['blue'],template='seaborn',title='Time Series Plotting')
+          st.plotly_chart(fig,theme=None,use_container_width=True)
 
 else:
   if uploaded_file:
